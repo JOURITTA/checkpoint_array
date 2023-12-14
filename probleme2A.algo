@@ -1,0 +1,41 @@
+PROCEDURE dot_product(v1,v2:array of FLOAT var ps:FLOAT)
+   VAR
+     i:INTEGER;
+   BEGIN
+    FOR i FROM 0 TO v1. length -1  STEP 1  DO
+            ps:=ps+v1[i]*v2[i];
+   END_FOR
+END
+PROCEDURE saisie(var n,m:INTEGER)
+BEGIN
+   write ("donner un nombre de vecteur") ;
+  read(n) ;
+  write ("donner un nombre de colonne") ;
+  read(m) ;
+END
+PROCEDURE saisie_tab(var tab:array of FLOAT, n,m:INTEGER)
+VAR
+i,j:INTEGER;
+BEGIN
+   FOR i FROM 0 TO n-1 STEP 1  DO
+   FOR j FROM 0 TO m-1 STEP 1  DO
+        read(tab[n][m]);
+   END_FOR 
+END_FOR
+END
+ALGORITHM produit_scalaire
+VAR
+   n, m : integer;
+   tab: array of FLOAT [50][50] ;
+   ps:FLOAT;
+BEGIN
+saisie(n,m);
+saisie_tab(tab,n,m);
+FOR i FROM 0 TO m-1 STEP 1 DO
+v1:=tab[i];
+v2:=tab[i+1];
+dot_product(v1,v2,ps);
+IF (ps=0) then
+write("les 2 vecteurs sont orthogonaux");
+END_IF
+END

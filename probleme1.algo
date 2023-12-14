@@ -1,0 +1,35 @@
+ALGORITHM somme_distint
+VAR
+    i, j :integer;
+    sum : integer :=0;
+    k : BOOLEAN;
+    t1 : array_name : ARRAY_OF INTEGER[50] := {3,1,7,9};
+    t2 : array_name : ARRAY_OF INTEGER[50] := {2,4,1,9,3};
+BEGIN
+    FOR i FROM 0 TO t1.length -1 STEP step  DO
+        FOR j FROM 0 TO t2.length -1 STEP step  DO
+            if (t1[i]!= t2[j]) then
+               k := true;
+            else 
+                k := false;
+                break;
+            END_IF   
+        END_FOR
+        if (k = true) then
+        sum:=sum+t1[i];
+        END_IF
+    END_FOR
+    FOR i FROM 0 TO t2.length -1 STEP step  DO
+        FOR j FROM 0 TO t1.length -1 STEP step  DO
+            if (t2[i]!= t1[j]) then
+               k := true;
+            else 
+                k := false;
+                break;
+            END_IF   
+        END_FOR
+        if (k = true) then
+        sum:=sum+t2[i];
+        END_IF
+    END_FOR
+END
